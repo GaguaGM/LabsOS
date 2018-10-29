@@ -1,19 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
-int main(){
-	 pid_t pid;
-	  pid = fork();
-	   if (pid > 0 ){
-		            printf("Child.proc!\n");
-			             printf("Pid-%d\n",getpid());
-				             }
-	    if (pid==0){
-		             printf("Parent.proc!\n");
-			              printf("Pid-%d\n",getpid());
-				              }
-	            return 0;
+int main (int argc, char * argv[]){
+	pid_t pid = getpid();
+
+	if ((pid = fork()) == 0){
+		printf("Child_process %d\n", getpid());
+		sleep(5);
+		printf(getpid(), "End");
+	}
+	else {
+		printf("Parent_process %d\n", getpid());
+		sleep(1);
+		printf(getpid(), "End"); 
 }
-
+}
