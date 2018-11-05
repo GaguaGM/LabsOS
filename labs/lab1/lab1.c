@@ -10,11 +10,11 @@ int main (int argc, char * argv[]){
 	if ((pid = fork()) == 0){
 		printf("Child_process %d\n", getpid());
 		sleep(5);
-		printf(getpid(), "End");
+		printf("End %d\n", getpid());
 	}
 	else {
 		printf("Parent_process %d\n", getpid());
 		sleep(1);
-		printf(getpid(), "End"); 
+		printf("End %d\n", getpid()); 
 }
 }
