@@ -7,7 +7,7 @@
 #include <fcntl.h>
 
 #define FIFO "./file"
-#define BUFFER_SIZE 8
+#define BUFFER_SIZE 80
 
 
 void time_now(char *);
