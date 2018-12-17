@@ -19,12 +19,20 @@ int main(int argc,char * argv[]){
 	pid = fork();
 	if (pid == 0){
 		int fd = open(FIFO,O_WRONLY);
+		printf("Child:FIFO open\n");
+		if (fd == -1){
+			printf("Child:Cant open FIFO\n");
+		}
 		time_now(buffer);
 		write(fd,buffer,BUFFER_SIZE);
 		close(fd);
 	}
 	else {
 		int fd = open(FIFO,O_RDONLY);
+		printf("PARENT:FIFO open\n");
+		if (fd == -1){
+			printf("PARENT:Cant open FIFO\n");
+		}
 		read(fd,buffer,BUFFER_SIZE);
 		printf("From proc: %s\n",buffer);
 		close(fd);
