@@ -22,6 +22,7 @@ int main(int argc,char * argv[]){
 		printf("Child:FIFO open\n");
 		if (fd == -1){
 			printf("Child:Cant open FIFO\n");
+			exit(0);
 		}
 		time_now(buffer);
 		write(fd,buffer,BUFFER_SIZE);
@@ -32,6 +33,7 @@ int main(int argc,char * argv[]){
 		printf("PARENT:FIFO open\n");
 		if (fd == -1){
 			printf("PARENT:Cant open FIFO\n");
+			exit(0);
 		}
 		read(fd,buffer,BUFFER_SIZE);
 		printf("From proc: %s\n",buffer);
