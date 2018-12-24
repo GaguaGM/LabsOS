@@ -43,12 +43,12 @@ int main(){
 	exit(0);
 	}
 	pthread_create(&thread,NULL,time_now,NULL);
-	sleep(0.5);
+	sleep(1);
 	while(1){
 		pthread_mutex_lock(&mutex);
 		printf("%s\n",time_spam);
 		pthread_mutex_unlock(&mutex);
-		sleep(0.5);
+		sleep(1);
 	}
 
 	pthread_mutex_destroy(&mutex);
