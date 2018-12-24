@@ -11,7 +11,7 @@ struct sembuf sem_lock = {0,-1,0}, sem_open = {0,1,0};
 int main(){
 	char * time_spam;
 	key_t key = ftok("/tmp",'a');
-	int shmid = (shmget(2002,32,0666));
+	int shmid = (shmget(key,32,0666));
 	int semid = (semget(key,1,0666));
 	if (semid == -1){
 		printf("error\n");
