@@ -1,6 +1,6 @@
 all: Producer Consumer
 
 Producer:
-	gcc -o Producer Producer.c -lpthread 
+	gcc -o producer Producer.c -lpthread 
 Consumer:
-	gcc -o Consumer Consumer.c -lpthread
+	gcc -o consumer Consumer.c -lpthread
