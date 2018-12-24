@@ -33,7 +33,8 @@ int main(){
 	pthread_t thread;
 	pthread_mutex_init(&mutex,NULL);
 	int shm_id;
-	shm_id = (shmget(2002,32,IPC_CREAT|0666));
+	key_t semkey = ftok("/tmp", 'a'); 
+	shm_id = (shmget(semkey, 2*sizeof(int), IPC_CREAT | 0666));
 	if(shm_id == -1){
 		printf("Warning\n");
 		exit(0);
