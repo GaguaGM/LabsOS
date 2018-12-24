@@ -1,2 +1,4 @@
 all:
 	gcc -o produser Produser.c -lpthread
+	./produser
+	
