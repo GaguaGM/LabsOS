@@ -15,6 +15,7 @@ void time_now(char *);
 int main(int argc,char * argv[]){
 	pid_t pid;
 	char * buffer = (char *)calloc(BUFFER_SIZE,sizeof(char));
+	unlink(FIFO);
 	if ((mkfifo(FIFO,0777)) == -1){
 		printf("Cant create FIFO\n");
 	}
