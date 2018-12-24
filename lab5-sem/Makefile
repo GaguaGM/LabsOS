@@ -1,6 +1,6 @@
-all: Poducer Consumer
+all: Poducer1 Consumer1
 
-producer:
-	gcc -o producer producer.c
-consumer:
-	gcc -o consumer consumer.c
+Producer1:
+	gcc -o producer2 producer.c
+Consumer1:
+	gcc -o consumer2 consumer.c
