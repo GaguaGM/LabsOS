@@ -6,16 +6,16 @@
 #include <sys/types.h>
 
 #define MAX 10
-#define MEMORY 32
+#define MEMORY 80
 
 int counter = 0;
 char * addr;
 
-void time_spam();
 pthread_mutex_t mutex;
 pthread_cond_t condition;
 void * producer();
 void * consumer();
+void time_spam();
 
 
 void * producer(){
@@ -24,7 +24,6 @@ void * producer(){
 		time_spam();
 		sleep(1);
 		pthread_cond_broadcast(&condition);
-		sleep(1);
 		pthread_mutex_unlock(&mutex);
 	}
 }
@@ -33,8 +32,9 @@ void * producer(){
 void * consumer(){
 	while(1){
 		pthread_mutex_lock(&mutex);
+		printf(addr);
 			pthread_cond_wait(&condition,&mutex);
-			printf("Stop %s\n",addr);
+			printf("\nStop %s\n",addr);
 		}
 		pthread_mutex_unlock(&mutex);
 	}
@@ -47,16 +47,12 @@ int main(){
 	pthread_t consume;
 	
 	int shm_id;
-	key_t semkey = ftok("main.c", 'a'); 
-	if (shm_id = (shmget(semkey, MEMORY*sizeof(char), IPC_CREAT | 0666)) == -1){
+	if ((shm_id = shmget(9999 ,MEMORY, IPC_CREAT | 0666)) == -1) { 
 	printf("Warning\n"); 
+	exit(0); 
+	}
+	if ((addr = shmat(shm_id, addr, 0)) == (char *) -1) {
 	perror(0);
-	exit(0);
-	} 
-	addr = shmat(shm_id, NULL, 0);
-	if (addr == (char*) -1) {
-	perror(0);
-	exit(0);
 	}
 	pthread_mutex_init(&mutex,NULL);
 	pthread_cond_init(&condition,NULL);
@@ -65,7 +61,10 @@ int main(){
 	sleep(15);
 	pthread_mutex_destroy(&mutex);
 	pthread_cond_destroy(&condition);
+
+
 }
+
 
 void time_spam(){
 	time_t timer;
