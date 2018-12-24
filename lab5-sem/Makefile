@@ -1,6 +1,6 @@
 all: producer consumer
 
-	Producer:
+producer:
 	gcc -o producer producer.c
-	Consumer:
+consumer:
 	gcc -o consumer consumer.c

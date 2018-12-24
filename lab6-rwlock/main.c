@@ -35,7 +35,7 @@ void * consumer(){
 			pthread_rwlock_rdlock(&rwlock);
 			for(;counter;counter--)
 				addr[counter] = ' ';
-			printf("Stop %s\n");
+			printf("Stop\n");
 			pthread_rwlock_unlock(&rwlock);
 		}
 	}
