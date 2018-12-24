@@ -1,2 +1,2 @@
 all:
-	gcc -o produser produser.c
+	gcc -o produser Produser.c
