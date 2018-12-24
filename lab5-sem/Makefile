@@ -1,4 +1,4 @@
-all: Poducer1 Consumer1
+all: Producer1 Consumer1
 
 Producer1:
 	gcc -o producer2 producer.c
