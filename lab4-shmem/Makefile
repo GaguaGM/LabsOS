@@ -1,6 +1,4 @@
 all: Producer Consumer
-
-
 Producer:
 	gcc -o Producer Producer.c -lpthread
 
