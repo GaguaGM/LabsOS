@@ -12,7 +12,8 @@ void time_now();
 
 int main(){
 	int shmid;
-	shmid = (shmget(0102,32,IPC_CREAT | 0666));
+	key_t semkey = ftok("/tmp", 'a'); 
+	shmid = (shmget(semkey, 2*sizeof(int), IPC_CREAT | 0666));
 	if (shmid == -1){
 		printf("cant open memory\n");
 		exit(0);
