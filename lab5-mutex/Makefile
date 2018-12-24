@@ -1,2 +1,2 @@
 all:
-	gcc -o produser Produser.c
+	gcc -o produser Produser.c -lpthread
