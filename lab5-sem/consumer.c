@@ -12,7 +12,7 @@ int main(){
 	char * time_spam;
 	key_t key = ftok("/tmp",'a');
 	int shmid = (shmget(2002, 2*sizeof(int),0666));
-	int semid = (semget(semkey, 2*sizeof(int),0666));
+	int semid = (semget(key, 2*sizeof(int),0666));
 	if (semid == -1){
 		printf("error\n");
 		exit(0);
