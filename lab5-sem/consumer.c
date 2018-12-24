@@ -21,7 +21,7 @@ int main(){
 		printf("cant open mem\n");
 		exit(0);
 	}
-	if((time_spam = shmat(shmid,time_spam,0)) == (char*)-1)
+	if((time_spam = shmat(shmid,0,0)) == (char*)-1)
 	{
 		printf("Error\n");
 		exit(0);
