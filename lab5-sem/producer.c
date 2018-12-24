@@ -35,6 +35,4 @@ if((time_spam = shmat(shmid,NULL,0)) == (char*)-1){
                         semop(semid, &sem_open, 1);
                 }
         }
-
-        return 0;
 }
