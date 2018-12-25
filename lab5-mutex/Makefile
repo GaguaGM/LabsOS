@@ -1,4 +1,4 @@
 all:
-	gcc -o produser Produser.c -lpthread
-	./produser
+	gcc -o produser Produser.c -lpthread -Wall
+	
 	

@@ -17,15 +17,13 @@ void* time_now(){
 	time_t timer;
 	struct tm timeval;
 	while(1){
-		if(!pthread_mutex_lock(&mutex)){
+        pthread_mutex_lock(&mutex);
 			timer = time(0);
 			timeval = *localtime(&timer);
 			sprintf(time_spam,"%.2d:%.2d:%.2d",timeval.tm_hour,timeval.tm_min,timeval.tm_sec);
-			sleep(1);
-			pthread_mutex_unlock(&mutex);
-			
-		}
+        pthread_mutex_unlock(&mutex);
 	}
+    return 0;
 }
 
 

@@ -9,9 +9,9 @@
 struct sembuf sem_lock = {0,-1,0}, sem_open = {0,1,0};
 int main(){
 	char * time_spam;
-	key_t key = ftok("/tmp",'a');
-	int shmid = (shmget(2002,32,IPC_CREAT | 0666));
-	int semid = (semget(key,1,IPC_CREAT | 0666));
+    key_t semkey = ftok("/tmp", 'a');
+    int shmid = (shmget(2002, 32,IPC_CREAT | 0666));
+    int semid = (semget(semkey, 1, IPC_CREAT | 0666 ));
 	if (semid == -1){
 		printf("Error\n");
 		exit(0);
@@ -31,8 +31,10 @@ if((time_spam = shmat(shmid,NULL,0)) == (char*)-1){
                 if(timer != timing){
                         semop(semid, &sem_lock, 1);
                         sprintf(time_spam, "%s\n", ctime(&timer));
-                        sleep(1);
+                    
                         semop(semid, &sem_open, 1);
+                    sleep(1);
+                    
                 }
         }
 }
